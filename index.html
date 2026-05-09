@@ -873,7 +873,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
           <li>Entrega imediata no e-mail</li>
           <li>Garantia de 7 dias</li>
         </ul>
-        <a href="https://pay.hotmart.com/C104585497F?off=r61hzbot" class="btn-card btn-blue">Compre o E-book</a>
+        <a href="https://pay.hotmart.com/C104585497F?off=r61hzbot" class="btn-card btn-blue" data-cta="add-to-cart" data-cta-name="E-book + 1 Número da Sorte" data-cta-value="39.90">Compre o E-book</a>
       </div>
 
       <!-- Combo 10 -->
@@ -889,7 +889,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
           <li>10x mais chances de ganhar</li>
           <li>Garantia de 7 dias</li>
         </ul>
-        <a href="https://pay.hotmart.com/C104585497F?off=xp6c1ckt" class="btn-card btn-white">Compre o E-book</a>
+        <a href="https://pay.hotmart.com/C104585497F?off=xp6c1ckt" class="btn-card btn-white" data-cta="add-to-cart" data-cta-name="E-book + 10 Números da Sorte" data-cta-value="297.00">Compre o E-book</a>
       </div>
 
     </div>
@@ -1069,6 +1069,21 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       if (!target) return;
       e.preventDefault();
       target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    });
+  });
+</script>
+
+<!-- dataLayer: add_to_cart on CTA click -->
+<script>
+  window.dataLayer = window.dataLayer || [];
+  document.addEventListener('click', function (e) {
+    var el = e.target.closest('[data-cta="add-to-cart"]');
+    if (!el) return;
+    window.dataLayer.push({
+      event: 'add_to_cart',
+      button_text: (el.textContent || '').trim(),
+      button_name: el.dataset.ctaName,
+      button_value: parseFloat(el.dataset.ctaValue)
     });
   });
 </script>
